@@ -4,5 +4,5 @@
         "rootDir": "./src",
         "outDir": "./dist"
     },
-    "exclude": ["dist", "eslint.config.mts"]
+    "exclude": ["dist", "eslint.config.js"]
 }
