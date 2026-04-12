@@ -9,7 +9,7 @@
         "tsx": "^4.21.0"
     },
     "scripts": {
-        "dev": "tsx watch src/index.ts || true",
+        "dev": "tsx watch --env-file=.env src/index.ts || true",
         "build": "tsc",
         "lint": "eslint . src"
     },
@@ -17,6 +17,8 @@
     "license": "UNLICENSED",
     "description": "",
     "dependencies": {
-        "fastify": "^5.8.4"
+        "@fastify/jwt": "^10.0.0",
+        "fastify": "^5.8.4",
+        "fastify-plugin": "^5.1.0"
     }
 }
