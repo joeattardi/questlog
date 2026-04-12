@@ -1,0 +1,22 @@
+{
+  "name": "questlog",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev:ui": "npm run dev -w packages/ui",
+    "dev:backend": "npm run dev -w packages/backend",
+    "dev": "concurrently -n \"ui,backend\" -c \"cyan,magenta\" \"npm run dev:ui\" \"npm run dev:backend\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "description": "",
+  "workspaces": [
+    "packages/ui",
+    "packages/backend"
+  ],
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
