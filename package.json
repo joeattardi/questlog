@@ -7,6 +7,7 @@
         "dev:ui": "npm run dev -w packages/ui",
         "dev:backend": "npm run dev -w packages/backend",
         "dev": "concurrently -n \"ui,backend\" -c \"cyan,magenta\" \"npm run dev:ui\" \"npm run dev:backend\"",
+        "lint": "npm run -w packages/ui lint && npm run -w packages/backend lint",
         "format": "prettier --write ."
     },
     "keywords": [],
@@ -22,6 +23,7 @@
         "@types/node": "^25.6.0",
         "concurrently": "^9.2.1",
         "eslint": "^10.2.0",
+        "globals": "^17.5.0",
         "prettier": "^3.8.2",
         "typescript": "^6.0.2",
         "typescript-eslint": "^8.58.1"

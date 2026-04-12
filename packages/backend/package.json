@@ -4,10 +4,12 @@
     "version": "1.0.0",
     "main": "index.js",
     "devDependencies": {
+        "jiti": "^2.6.1",
         "tsx": "^4.21.0"
     },
     "scripts": {
-        "dev": "tsx watch src/index.ts || true"
+        "dev": "tsx watch src/index.ts || true",
+        "lint": "eslint . src"
     },
     "author": "",
     "license": "UNLICENSED",
