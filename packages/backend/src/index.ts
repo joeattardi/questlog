@@ -1,6 +1,6 @@
+import cookie from '@fastify/cookie';
 import Fastify from 'fastify';
 import auth from './auth.js';
-import cookie from '@fastify/cookie';
 import authenticatedRoutes from './authenticated-routes.js';
 
 const fastify = Fastify({
