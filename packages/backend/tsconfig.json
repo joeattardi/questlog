@@ -4,5 +4,5 @@
         "rootDir": "./src",
         "outDir": "./dist"
     },
-    "exclude": ["dist", "eslint.config.js"]
+    "exclude": ["dist", "eslint.config.js", "drizzle.config.ts", "scripts/*"]
 }

@@ -1,6 +1,8 @@
 import fastifyJwt from '@fastify/jwt';
 import { FastifyReply, FastifyRequest } from 'fastify';
 import fp from 'fastify-plugin';
+import { getUserByUsername } from './db/repositories/users.js';
+import * as argon2 from 'argon2';
 
 declare module 'fastify' {
     interface FastifyInstance {
@@ -33,26 +35,24 @@ export default fp(async (fastify) => {
         }
     });
 
-    fastify.post('/api/login', (request, reply) => {
-        console.log(request.body);
+    fastify.post('/api/login', async (request, reply) => {
         const { username, password } = request.body as { username: string; password: string };
 
-        // TODO validate username and password
         // TODO: Use short term and refresh tokens
-        if (username === 'admin' && password === 'password') {
+        const user = await getUserByUsername(username);
+        if (user && (await argon2.verify(user.passwordHash, password))) {
             const token = fastify.jwt.sign({ username });
             reply
                 .setCookie('token', token, {
                     domain: 'localhost',
                     path: '/',
                     // TODO: enable later when using HTTPS
-                    // secure: true 
+                    // secure: true
                     sameSite: true,
                     httpOnly: true
                 })
                 .code(200)
                 .send({ status: 'loggedIn' });
-
         } else {
             reply.status(401).send({ error: 'Invalid username or password' });
         }
