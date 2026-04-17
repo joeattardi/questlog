@@ -5,7 +5,7 @@ export default function Home() {
     const data = useRouteLoaderData('app');
 
     return (
-        <main className={classes.container}>
+        <div className={classes.container}>
             <section className={classes.heroCard}>
                 <p className={classes.eyebrow}>Welcome back</p>
                 <h1>{data.user.name}</h1>
@@ -29,6 +29,6 @@ export default function Home() {
                     <p>Placeholder panel for future arbitrary lists like co-op picks or yearly goals.</p>
                 </article>
             </section>
-        </main>
+        </div>
     );
 }

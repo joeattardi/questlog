@@ -1,10 +1,10 @@
+import { Button, Callout } from '@radix-ui/themes';
 import { useForm } from 'react-hook-form';
-import { authClient } from '../lib/auth-client';
 import { useNavigate } from 'react-router';
-import classes from './Login.module.css';
 import logo from '../assets/images/logo.svg';
 import Input from '../components/ui/Input';
-import Button from '../components/ui/Button';
+import { authClient } from '../lib/auth-client';
+import classes from './Login.module.css';
 
 interface LoginFormData {
     email: string;
@@ -13,13 +13,19 @@ interface LoginFormData {
 
 export default function Login() {
     const navigate = useNavigate();
-
     const {
-        register,
         setError,
+        setFocus,
+        setValue,
         handleSubmit,
+        control,
         formState: { isSubmitting, errors }
-    } = useForm<LoginFormData>();
+    } = useForm<LoginFormData>({
+        defaultValues: {
+            email: '',
+            password: ''
+        }
+    });
 
     async function login(data: LoginFormData) {
         try {
@@ -34,6 +40,9 @@ export default function Login() {
                 setError('root.loginError', {
                     message: loginResponse.error.message || 'Login failed'
                 });
+                setValue('email', '');
+                setValue('password', '');
+                setFocus('email');
             } else {
                 navigate('/app');
             }
@@ -50,47 +59,44 @@ export default function Login() {
             <form className={classes.loginForm} onSubmit={handleSubmit(login)} noValidate>
                 <div className={classes.brandBlock}>
                     <img src={logo} alt="QuestLog Logo" className={classes.logo} />
-                    <p className={classes.tagline}>Track every quest. Keep every memory.</p>
                 </div>
 
                 <header className={classes.header}>
-                    <h1>Welcome back</h1>
-                    <p>Pick up right where your campaign left off.</p>
+                    <h1>Welcome back!</h1>
                 </header>
 
                 {errors.root?.loginError && (
-                    <span className={classes.errorBanner}>{errors.root.loginError.message}</span>
+                    <Callout.Root color="red">
+                        <Callout.Text>{errors.root.loginError.message}</Callout.Text>
+                    </Callout.Root>
+                    // <span className={classes.errorBanner}>{errors.root.loginError.message}</span>
                 )}
 
                 <label className={classes.field}>
                     <span>Email</span>
                     <Input
+                        control={control}
+                        rules={{ required: 'Email is required' }}
+                        name="email"
                         type="email"
-                        placeholder="you@questlog.app"
-                        autoComplete="email"
-                        {...register('email', { required: true })}
+                        placeholder="you@example.com"
                     />
                 </label>
-                {errors.email && <span className={classes.fieldError}>Email is required</span>}
+                {errors.email && <span className={classes.fieldError}>{errors.email.message}</span>}
 
                 <label className={classes.field}>
                     <span>Password</span>
                     <Input
+                        control={control}
+                        rules={{ required: 'Password is required' }}
+                        name="password"
                         type="password"
                         placeholder="Enter your password"
-                        autoComplete="current-password"
-                        {...register('password', { required: true })}
                     />
                 </label>
-                {errors.password && <span className={classes.fieldError}>Password is required</span>}
+                {errors.password && <span className={classes.fieldError}>{errors.password.message}</span>}
 
-                <div className={classes.metaRow}>
-                    <a href="#" onClick={(event) => event.preventDefault()}>
-                        Forgot password?
-                    </a>
-                </div>
-
-                <Button type="submit" disabled={isSubmitting}>
+                <Button type="submit" loading={isSubmitting}>
                     {isSubmitting ? 'Signing in...' : 'Log In'}
                 </Button>
             </form>

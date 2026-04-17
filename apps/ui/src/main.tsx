@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { RouterProvider } from 'react-router/dom';
 import { router } from './router';
 import './index.css';
+import { Theme } from '@radix-ui/themes';
 
 const container = document.getElementById('root');
 if (!container) {
@@ -11,6 +12,8 @@ if (!container) {
 
 createRoot(container).render(
     <StrictMode>
-        <RouterProvider router={router} />
+        <Theme>
+            <RouterProvider router={router} />
+        </Theme>
     </StrictMode>
 );

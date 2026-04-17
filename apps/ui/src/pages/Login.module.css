@@ -45,7 +45,6 @@
     background: var(--gradient-card);
     box-shadow: var(--shadow-lifted);
     backdrop-filter: blur(4px);
-    animation: card-enter 420ms ease-out;
 }
 
 .brand-block {
@@ -131,33 +130,4 @@
     height: 70px;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-soft);
-}
-
-@keyframes card-enter {
-    from {
-        opacity: 0;
-        transform: translateY(16px) scale(0.99);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-@media (max-width: 520px) {
-    .container {
-        padding: var(--space-6) var(--space-3);
-    }
-
-    .login-form {
-        padding: var(--space-6);
-        gap: var(--space-4);
-    }
-
-    .brand-block {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--space-3);
-    }
 }

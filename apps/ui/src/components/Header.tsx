@@ -1,21 +1,9 @@
-import { NavLink, useNavigate, useRouteLoaderData } from 'react-router';
+import { NavLink } from 'react-router';
 import logo from '../assets/images/logo.svg';
-import { authClient } from '../lib/auth-client';
 import classes from './Header.module.css';
-import Button from './ui/Button';
+import UserMenu from './UserMenu';
 
 export default function Header() {
-    const data = useRouteLoaderData('app');
-    const navigate = useNavigate();
-    
-    async function logout() {
-        await authClient.signOut({
-            fetchOptions: {
-                onSuccess: () => navigate('/')
-            }
-        });
-    }
-
     return (
         <header className={classes.header}>
             <NavLink to="/app" className={classes.titleLink}>
@@ -23,8 +11,7 @@ export default function Header() {
                 <h1 className={classes.productName}>QuestLog</h1>
             </NavLink>
             <div className={classes.topNav}>
-                <span className={classes.userName}>{data.user.name}</span>
-                <Button onClick={logout}>Log Out</Button>
+                <UserMenu />
             </div>
         </header>
     );

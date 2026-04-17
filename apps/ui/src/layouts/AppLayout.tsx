@@ -7,7 +7,7 @@ export default function AppLayout() {
     return (
         <div className={classes.layout}>
             <Header />
-            <main>
+            <main className={classes.mainContent}>
                 <Outlet />
             </main>
             <Footer />
