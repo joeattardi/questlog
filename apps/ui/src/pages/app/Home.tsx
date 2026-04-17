@@ -5,8 +5,6 @@ export default function Home() {
     const data = useLoaderData();
     const navigate = useNavigate();
 
-    console.log(data);
-
     async function logout() {
         await authClient.signOut({
             fetchOptions: {

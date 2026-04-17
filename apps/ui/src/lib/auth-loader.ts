@@ -1,18 +1,32 @@
 import { redirect } from 'react-router';
+import { authClient } from './auth-client';
 
 export async function protectedRouteLoader() {
     try {
-        const response = await fetch('/api/current-user', {
-            credentials: 'include'
-        });
+        const response = await authClient.getSession();
 
-        if (!response.ok || response.status !== 200) {
+        if (response.error || !response.data?.session || !response.data?.user) {
             return redirect('/login');
         }
 
-        return response.json();
+        return response.data;
     } catch (error) {
         console.error('Error fetching current user:', error);
         return redirect('/login');
+    }
+}
+
+export async function guestRouteLoader() {
+    try {
+        const response = await authClient.getSession();
+
+        if (response.data?.session && response.data?.user) {
+            return redirect('/app');
+        }
+
+        return null;
+    } catch (error) {
+        console.error('Error fetching current user:', error);
+        return null;
     }
 }

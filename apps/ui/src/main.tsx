@@ -6,7 +6,7 @@ import './index.css';
 import LandingPage from './pages/LandingPage.tsx';
 import Login from './pages/Login.tsx';
 import Home from './pages/app/Home.tsx';
-import { protectedRouteLoader } from './lib/auth-loader.ts';
+import { guestRouteLoader, protectedRouteLoader } from './lib/auth-loader.ts';
 
 const container = document.getElementById('root');
 if (!container) {
@@ -17,10 +17,12 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <LandingPage />,
+        loader: guestRouteLoader
     },
     {
         path: '/login',
-        element: <Login />
+        element: <Login />,
+        loader: guestRouteLoader
     },
     {
         path: '/app',
