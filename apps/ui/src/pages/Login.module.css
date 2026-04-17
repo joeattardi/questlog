@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4rem;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    h1 {
+        align-self: center;
+        font-weight: 700;
+    }
+}
+
+.logo {
+    width: 128px;
+    height: 128px;
+    align-self: center;
+}

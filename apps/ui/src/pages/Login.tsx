@@ -1,6 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { authClient } from '../lib/auth-client';
 import { useNavigate } from 'react-router';
+import classes from './Login.module.css';
+import logo from '../assets/images/logo.svg';
 
 interface LoginFormData {
     email: string;
@@ -39,9 +41,10 @@ export default function Login() {
     }
 
     return (
-        <main>
-            <h1>Log In</h1>
-            <form onSubmit={handleSubmit(login)} noValidate>
+        <div className={classes.container}>
+            <form className={classes.loginForm} onSubmit={handleSubmit(login)} noValidate>
+                <img src={logo} alt="QuestLog Logo" className={classes.logo} />
+                <h1>Log In</h1>
                 {errors.root?.loginError && <span>{errors.root.loginError.message}</span>}
                 <input
                     type="email"
@@ -59,6 +62,6 @@ export default function Login() {
                     Log In
                 </button>
             </form>
-        </main>
+        </div>
     );
 }

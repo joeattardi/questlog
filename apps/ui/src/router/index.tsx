@@ -7,17 +7,17 @@ import Home from '../pages/app/Home.tsx';
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <LandingPage />,
+        Component: LandingPage,
         loader: guestRouteLoader
     },
     {
         path: '/login',
-        element: <Login />,
+        Component: Login,
         loader: guestRouteLoader
     },
     {
         path: '/app',
-        element: <Home />,
+        Component: Home,
         loader: protectedRouteLoader
     }
 ]);
