@@ -14,7 +14,7 @@ export default function LandingPage() {
                     <p className={classes.brandText}>SaveSlot</p>
                 </div>
 
-                <h1>Your campaign journal, finally done right.</h1>
+                <h1>Your game collection, finally done right.</h1>
                 <p>
                     Keep your gaming backlog organized with a focused queue, track completed titles,
                     and build better play habits over time.
