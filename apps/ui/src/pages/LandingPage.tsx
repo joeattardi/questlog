@@ -1,8 +1,7 @@
 import { NavLink } from 'react-router';
-import classes from './LandingPage.module.css';
-import logo from '../assets/images/logo.svg';
 import controllerImg from '../assets/images/controller.jpg';
 import Logo from '../components/Logo';
+import classes from './LandingPage.module.css';
 
 export default function LandingPage() {
     return (

@@ -6,6 +6,8 @@ import Logo from '../components/Logo';
 import Input from '../components/ui/Input';
 import { authClient } from '../lib/auth-client';
 import classes from './Login.module.css';
+import Label from '../components/ui/Label';
+import FormField from '../components/ui/FormField';
 
 interface LoginFormData {
     email: string;
@@ -82,29 +84,31 @@ export default function Login() {
                         </Callout.Root>
                     )}
 
-                    <label className={classes.field}>
-                        <span>Email</span>
+                    <FormField>
+                        <Label htmlFor="email" label="Email" />
                         <Input
                             control={control}
+                            id="email"
                             rules={{ required: 'Email is required' }}
                             name="email"
                             type="email"
                             placeholder="you@example.com"
+                            error={errors.email?.message}
                         />
-                    </label>
-                    {errors.email && <span className={classes.fieldError}>{errors.email.message}</span>}
+                    </FormField>
 
-                    <label className={classes.field}>
-                        <span>Password</span>
+                    <FormField>
+                        <Label htmlFor="password" label="Password" />
                         <Input
                             control={control}
                             rules={{ required: 'Password is required' }}
                             name="password"
                             type="password"
+                            id="password"
                             placeholder="Enter your password"
+                            error={errors.password?.message}
                         />
-                    </label>
-                    {errors.password && <span className={classes.fieldError}>{errors.password.message}</span>}
+                    </FormField>
 
                     <Button type="submit" loading={isSubmitting}>
                         {isSubmitting ? 'Signing in...' : 'Log In'}

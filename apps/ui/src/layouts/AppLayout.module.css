@@ -6,4 +6,8 @@
 
 .main-content {
     display: grid;
+    background: var(--gradient-app);
+    display: flex;
+    justify-content: center;
+    padding: var(--space-6);
 }

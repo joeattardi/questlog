@@ -5,6 +5,7 @@ import Login from '../pages/Login.tsx';
 import NotFound from '../pages/NotFound.tsx';
 import Home from '../pages/app/Home.tsx';
 import AppLayout from '../layouts/AppLayout.tsx';
+import AddGame from '../pages/app/AddGame.tsx';
 
 export const router = createBrowserRouter([
     {
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 Component: Home
+            },
+            {
+                path: 'add',
+                Component: AddGame
             }
         ]
     },
