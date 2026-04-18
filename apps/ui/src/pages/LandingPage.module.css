@@ -73,6 +73,20 @@
     max-width: 520px;
 }
 
+.attribution {
+    position: absolute;
+    bottom: var(--space-3);
+    right: var(--space-3);
+    z-index: 2;
+    font-size: 0.65rem;
+    color: rgb(255 255 255 / 40%);
+    letter-spacing: 0.02em;
+
+    a {
+        color: var(--color-white);
+    }
+}
+
 .brand-row {
     display: inline-flex;
     align-items: center;

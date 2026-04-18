@@ -18,6 +18,8 @@ export default function LandingPage() {
                 />
                 <div className={classes.heroOverlay} aria-hidden="true" />
 
+                <span className={classes.attribution}>Photo by <a href="https://unsplash.com/@cjdante?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Javier Martinez</a> on <a href="https://unsplash.com/photos/red-xbox-one-game-controller-hUD0PUczwJQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></span>
+
                 <div className={classes.heroContent}>
                     <div className={classes.brandRow}>
                         <img src={logo} alt="SaveSlot Logo" className={classes.logo} />
@@ -34,16 +36,6 @@ export default function LandingPage() {
                         <NavLink to="/login" className={classes.primaryCta}>
                             Enter SaveSlot
                         </NavLink>
-                        <a
-                            href="#features"
-                            className={classes.secondaryCta}
-                            onClick={(event) => {
-                                event.preventDefault();
-                                document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
-                            }}
-                        >
-                            Explore features
-                        </a>
                     </div>
                 </div>
             </section>
