@@ -24,6 +24,15 @@ export default function AddGame() {
     async function onSubmit(data: AddGameFormData) {
         // TODO: call API to persist game
         console.log('Add game:', data);
+
+        await fetch('/api/games', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
         navigate('/app');
     }
 
