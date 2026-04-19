@@ -29,7 +29,6 @@ export default function GameSearchResult({ game }: GameSearchResultProps) {
                         {game.platforms.map(platform => <Badge key={platform}>{platform}</Badge>)}
                     </div>
                 )}
-                {game.rating && <div>{Math.round(game.rating)}</div>}
             </div>
         </div>
     );
